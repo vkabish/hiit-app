@@ -71,20 +71,24 @@ class Program extends React.Component<IProgramProps> {
   render() {
     const { id, title, time, kCal } = this.state;
     return (
-      <div>
-        <h1>Program</h1>
-        <h2>{title}</h2>
-        <p>
-          Time: {time}
-        </p>
-        <p>
-          kCal: {kCal}
-        </p>
-        <ul>
-          <li><Link to={`/training/${id}`}>Training</Link></li>
-          <li><Link to={`/statistic/${id}`}>Statistic</Link></li>
-          <li><Link to={`/schedule/${id}`}>Schedule</Link></li>
-          <li><Link to={`/plan/${id}`}>Plan</Link></li>
+      <div className="program-page">
+        <div className="program-info program-page__info">
+          <h2 className="program-info__title">{title}</h2>
+          <div className="program-info__details">
+            <span className="program-info__text">
+              Time: {time}
+            </span>
+            <span className="program-info__text">
+              kCal: {kCal}
+            </span>
+          </div>
+        </div>
+
+        <ul className="program-menu program-page__menu">
+          <li className="program-menu__item"><Link to={`/training/${id}`}>Training</Link></li>
+          <li className="program-menu__item"><Link to={`/statistic/${id}`}>Statistic</Link></li>
+          <li className="program-menu__item"><Link to={`/schedule/${id}`}>Schedule</Link></li>
+          <li className="program-menu__item"><Link to={`/plan/${id}`}>Plan</Link></li>
         </ul>
       </div>
     );

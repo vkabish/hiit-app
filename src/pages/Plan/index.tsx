@@ -81,8 +81,7 @@ class Plan extends React.Component<IPlanProps> {
   render() {
     const { id, title, work, pause, rest, roundes } = this.state;
     return (
-      <div>
-        <h1>Plan</h1>
+      <div className="plan-page">
         <h2>
           <Link to={`/program/${id}`}>Back to Program</Link>{' '}
           {title}

@@ -12,17 +12,21 @@ interface IProgramsProps {
 }
 
 const renderExercise = ({ id, title, description }: IProgramItem) => (
-  <div key={id}>
-    <h2>{title}</h2>
-    <p>{description}</p>
-    <Link to={`/program/${id}`}>
+  <div className="program-item programs-list__item" key={id}>
+    <h2 className="program-item__title">
+      {title}
+    </h2>
+    <p className="program-item__description">
+      {description}
+    </p>
+    <Link to={`/program/${id}`} className="program-item__link">
       To Program
     </Link>
   </div>
 );
 
 const Programs = ({ programs }: IProgramsProps) => (
-  <div>
+  <div className="programs-list">
     {programs.map(renderExercise)}
   </div>
 );
