@@ -20,12 +20,14 @@ const AppRoutes = () => (
           </button>
         </div>
       </header>
-      <Route path={`/`} exact component={Main} />
-      <Route path={`/${routes.program}/:id`} component={Program} />
-      <Route path={`/${routes.training}/:id`} component={Training} />
-      <Route path={`/${routes.statistic}/:id`} component={Statistic} />
-      <Route path={`/${routes.schedule}/:id`} component={Schedule} />
-      <Route path={`/${routes.plan}/:id`} component={Plan} />
+      <div className="app-content">
+        <Route path={`/`} exact component={Main} />
+        <Route path={`/${routes.program}/:id`} component={Program} />
+        <Route path={`/${routes.training}/:id`} component={Training} />
+        <Route path={`/${routes.statistic}/:id`} component={Statistic} />
+        <Route path={`/${routes.schedule}/:id`} component={Schedule} />
+        <Route path={`/${routes.plan}/:id`} component={Plan} />
+      </div>
     </div>
   </Router>
 );

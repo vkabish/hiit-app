@@ -2,24 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import programs from '../../db';
 
-interface IPlanProps {
-  match: any,
-}
+import EditorInput from '../../components/EditorInput';
 
-interface IExercise {
-  id: string,
-  title: string
-}
-
-interface IPlanState {
-  id: string,
-  title: string,
-  work: number,
-  pause: number,
-  roundes: number,
-  rest: number,
-  plan: IExercise[]
-}
+import { IPlanProps, IPlanState, IExercise } from './interfaces';
 
 class Plan extends React.Component<IPlanProps> {
   state: IPlanState = {
@@ -62,7 +47,7 @@ class Plan extends React.Component<IPlanProps> {
 
   renderPlanRow(row: IExercise) {
     return (
-      <li key={row.id}>
+      <li key={row.id} className="plan-list__item">
         {row.title}
       </li>
     )
@@ -71,54 +56,73 @@ class Plan extends React.Component<IPlanProps> {
   renderPlanList() {
     const { plan } = this.state;
     return (
-      <ul>
+      <ul className="plan-list plan-page__plan-list">
         {plan.map(this.renderPlanRow)}
       </ul>
     );
   }
 
-
   render() {
     const { id, title, work, pause, rest, roundes } = this.state;
     return (
       <div className="plan-page">
-        <h2>
-          <Link to={`/program/${id}`}>Back to Program</Link>{' '}
+        <h2 className="plan-page__title">
           {title}
         </h2>
 
-        <p>
-          <label>
-            Title:
-          </label>
-          <input type="text" name="title" value={title} onChange={this.changeValue}/>
-        </p>
+        <div className="plan-editor plan-page__editor">
+          <EditorInput 
+            className="plan-editor__edit-title"
+            type="text"
+            name="title"
+            value={title}
+            label="Title:"
+            onChange={this.changeValue}
+          />
 
-        <div>
-          <ul>
+          <ul className="plan-editor__edit-settings">
             <li>
-              Work:
-              <input type="number" step="5" name="work" value={work} onChange={this.changeValue} />
+              <EditorInput 
+                type="number"
+                name="work"
+                value={work}
+                label="Work:"
+                onChange={this.changeValue}
+                step="5"
+              />
             </li>
             <li>
-              Pause:
-              <input type="number" step="5" name="pause" value={pause} onChange={this.changeValue} />
+              <EditorInput 
+                type="number"
+                name="pause"
+                value={pause}
+                label="Pause:"
+                onChange={this.changeValue}
+                step="5"
+              />
             </li>
             <li>
-              Roundes:
-              <input type="number" step="1" name="roundes" value={roundes} onChange={this.changeValue} />
+              <EditorInput 
+                type="number"
+                name="roundes"
+                value={roundes}
+                label="Roundes:"
+                onChange={this.changeValue}
+                step="1"
+              />
             </li>
             <li>
-              Rest:
-              <input type="number" step="30" name="rest" value={rest} onChange={this.changeValue} />
+              <EditorInput 
+                type="number"
+                name="rest"
+                value={rest}
+                label="Rest:"
+                onChange={this.changeValue}
+                step="30"
+              />
             </li>
           </ul>
-
-          <button>
-            Save
-          </button>
         </div>
-
         {this.renderPlanList()}
       </div>
     );

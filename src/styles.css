@@ -1,0 +1,108 @@
+/* COMMON STYLES */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.list-unstyle {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* APP STYLES */
+.app {
+  background: #ffffff;
+}
+.app-header {
+  background-color: #2d16ff;
+  color: #fafafa;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 12px;
+}
+.app-header__title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+.app-header__actions {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.app-header__btn {
+  width: 50px;
+  height: 50px;
+  font-size: 12px;
+  border-radius: 10px;
+  background-color: #4b3dcf;
+  color: #fafafa;
+  margin-left: 12px;
+}
+
+
+.app-content {
+  padding: 40px;
+}
+
+
+/* PROGRAMS LIST */
+.programs-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.programs-list__item {
+  margin: 0 12px 12px 0;
+}
+.program-item {
+  color: #fafafa;
+  border-radius: 4px;
+  border: 3px solid #2d16ff;
+  background-color: #2d16ff;
+  padding: 12px;
+}
+.program-item__title {
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.program-item__description {
+  line-height: 1.2;
+}
+.program-item__link {
+  color: #fafafa;
+}
+
+
+
+
+
+.editor-input {}
+.editor-input__label {}
+.editor-input__input {}
+.editor-input__message {}
+
+
+.plan-page {}
+.plan-page__title {}
+.plan-page__editor {}
+.plan-page__plan-list {}
+
+.plan-editor  {}
+.plan-editor__edit-title {}
+.plan-editor__edit-settings {}
+.plan-list {}
+.plan-list__item {}

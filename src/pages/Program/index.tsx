@@ -2,24 +2,7 @@ import React, {ReactText} from 'react';
 import { Link } from 'react-router-dom';
 import programs from '../../db';
 
-interface IProgramProps {
-  match: any,
-}
-
-interface IProgramState {
-  id: string,
-  title: string,
-  time: number,
-  kCal: number,
-}
-
-interface ISettings {
-  work: number,
-  pause: number,
-  roundes: number,
-  rest: number,
-  exercises: number
-}
+import { IProgramProps, IProgramState, ISettings } from './interfaces';
 
 class Program extends React.Component<IProgramProps> {
   state: IProgramState = {
