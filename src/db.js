@@ -83,9 +83,9 @@ const programs = [
       }
     ],
     "settings": {
-      "work": 45,
-      "pause": 15,
-      "roundes": 3,
+      "work": 20,
+      "pause": 10,
+      "roundes": 2,
       "rest": 30,
       "exercises": 8
     },

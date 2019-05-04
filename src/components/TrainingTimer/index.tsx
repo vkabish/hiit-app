@@ -1,21 +1,28 @@
 import React from 'react';
 
+import { convertSeconds, IConvertSeconds } from '../../helpers/time';
+
 import Button from './Button';
 import Timer from './Timer';
 
-import { ITrainingTimer, ITimer } from './interfaces';
-import { any } from 'prop-types';
+import { ITrainingTimer, ITrainingTimerState } from './interfaces';
 
 const ONE_SECOND = 1000;
 
 class TrainingTimer extends React.Component<ITrainingTimer> {
+  time: number;
+  laps: number;
+  onFinish: () => void;
   intervalTimerId: number;
   secondsRemaining: number;
+  convertSeconds: IConvertSeconds;
 
   constructor(props: any) {
     super(props);
     
-    
+    this.time = this.props.time;
+    this.laps = this.props.laps;
+    this.onFinish = this.props.onFinish;
     this.intervalTimerId = 0;
     this.secondsRemaining = 0;
 
@@ -23,10 +30,24 @@ class TrainingTimer extends React.Component<ITrainingTimer> {
     this.startCountDown = this.startCountDown.bind(this);
     this.stopCountDown = this.stopCountDown.bind(this);
     this.tick = this.tick.bind(this);
+    this.setTime = this.setTime.bind(this);
+    this.convertSeconds = convertSeconds;
   }
-  state:ITimer = {
-    minutes: 1,
+
+  state:ITrainingTimerState = {
+    minutes: '00',
     seconds: '00',
+  };
+
+  componentWillMount(): void {
+    this.setTime()
+  }
+
+  setTime() {
+    const result = this.convertSeconds(this.props.time);
+    const [, minutes, seconds] = result.split(':');
+
+    this.setState({ minutes, seconds });
   }
 
   tick() {
@@ -49,6 +70,12 @@ class TrainingTimer extends React.Component<ITrainingTimer> {
 
     if (minutes === 0 && seconds === 0) {
       clearInterval(this.intervalTimerId);
+
+      if (this.props.laps) {
+        this.props.onFinish();
+        this.setTime();
+        this.startCountDown();
+      }
     }
 
     this.secondsRemaining--;
@@ -56,7 +83,7 @@ class TrainingTimer extends React.Component<ITrainingTimer> {
 
   startCountDown() {
     this.intervalTimerId = window.setInterval(this.tick, ONE_SECOND);
-    let min = this.state.minutes;
+    let min = Number(this.state.minutes);
     this.secondsRemaining = (min * 60) + Number(this.state.seconds);
   }
 
@@ -66,17 +93,34 @@ class TrainingTimer extends React.Component<ITrainingTimer> {
 
   render() {
     return (
-      <div>
-        <Timer 
-          minutes={this.state.minutes} 
-          seconds={this.state.seconds} 
-        />
-        <Button onClick={this.startCountDown}>
-          Start
-        </Button>
-        <Button onClick={this.stopCountDown}>
-          Stop
-        </Button>
+      <div className="training-timer">
+        {!this.props.laps &&
+          <div className="training-timer__finish-workout">
+            FINISH WORKOUT
+          </div>
+        }
+        {!!this.props.laps &&
+          <React.Fragment>
+            <Timer
+              minutes={this.state.minutes}
+              seconds={this.state.seconds}
+            />
+            <div className="trainig-timer__actions">
+              <Button
+                className="training-timer__btn training-timer__start"
+                onClick={this.startCountDown}
+              >
+                Start
+              </Button>
+              <Button
+                className="training-timer__btn training-timer__stop"
+                onClick={this.stopCountDown}
+              >
+                Stop
+              </Button>
+            </div>
+          </React.Fragment>
+        }
       </div>
     );
 

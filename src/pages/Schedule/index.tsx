@@ -2,7 +2,7 @@ import React from 'react';
 
 const Schedule = () => (
   <div>
-    Schedule
+    <h2 className="page-title">Schedule</h2>
   </div>
 );
 

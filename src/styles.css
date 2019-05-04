@@ -15,21 +15,60 @@ body {
   list-style: none;
 }
 
+.page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.line {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--main-bg-invert-color);
+}
+
+/* VARIABLES */
+:root {
+  --main-bg-color: #000;
+  --main-bg-invert-color: #fafafa;
+  --main-text-color: #fafafa;
+}
+
 /* APP STYLES */
 .app {
   background: #ffffff;
 }
+
 .app-header {
-  background-color: #2d16ff;
-  color: #fafafa;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 12px;
+  position: relative;
 }
+
+.app-header:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--main-bg-invert-color);
+}
+
 .app-header__title {
-  font-size: 32px;
-  font-weight: 700;
+/*  font-size: 32px;*/
+/*  font-weight: 700;*/
   line-height: 1;
   margin: 0;
   padding: 0;
@@ -40,20 +79,18 @@ body {
 }
 
 .app-header__btn {
-  width: 50px;
-  height: 50px;
+  /*width: 50px;*/
+  /*height: 50px;*/
   font-size: 12px;
   border-radius: 10px;
-  background-color: #4b3dcf;
-  color: #fafafa;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   margin-left: 12px;
 }
 
-
 .app-content {
-  padding: 40px;
+  padding: 20px;
 }
-
 
 /* PROGRAMS LIST */
 .programs-list {
@@ -62,47 +99,211 @@ body {
   justify-content: flex-start;
   align-content: flex-start;
 }
+
 .programs-list__item {
   margin: 0 12px 12px 0;
 }
+
 .program-item {
-  color: #fafafa;
-  border-radius: 4px;
-  border: 3px solid #2d16ff;
-  background-color: #2d16ff;
+/*  color: #fafafa;*/
+/*  border-radius: 4px;*/
+/*  border: 3px solid #2d16ff;*/
+/*  background-color: #2d16ff;*/
   padding: 12px;
 }
+
 .program-item__title {
   line-height: 1;
   margin: 0;
   padding: 0;
-  font-size: 24px;
-  font-weight: 700;
+  /*font-size: 24px;*/
+  /*font-weight: 700;*/
 }
+
 .program-item__description {
   line-height: 1.2;
 }
+
 .program-item__link {
-  color: #fafafa;
+/*  color: #fafafa;*/
 }
 
+/* EDITOR INPUT */
+.editor-input {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  background-color: var(--main-bg-color);
+  padding: 12px;
+  position: relative;
+  color: var(--main-text-color);
+  margin: 0;
+}
 
+.editor-input:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: var(--main-bg-invert-color);
+}
 
+.editor-input__label {
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--main-text-color);
+  align-self: flex-start;
+}
 
+.editor-input__input {
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+  border: 0;
+  font-size: 14px;
+  /*border-bottom: 1px solid var(--main-text-color);*/
+}
 
-.editor-input {}
-.editor-input__label {}
-.editor-input__input {}
-.editor-input__message {}
+.editor-input__message {
 
+}
 
+/* PLAN */
 .plan-page {}
-.plan-page__title {}
+.plan-page__title {
+  margin-bottom: 12px;
+}
 .plan-page__editor {}
 .plan-page__plan-list {}
 
-.plan-editor  {}
+.plan-editor {
+  /*height: 0;*/
+  /*overflow: hidden;*/
+  /*opacity: 0;*/
+  /*transition: opacity 5s;*/
+  margin-bottom: 12px;
+}
+
+.plan-editor--open {
+  /*height: 100%;*/
+  /*opacity: 1;*/
+}
+
+.plan-editor__input {
+  margin: 0;
+}
 .plan-editor__edit-title {}
 .plan-editor__edit-settings {}
-.plan-list {}
-.plan-list__item {}
+
+/* PLAN SECTION */
+.plan-section {
+  border: 1px solid var(--main-bg-color);
+  /*padding: 12px;*/
+}
+
+.plan-section__title {
+  padding: 12px;
+  margin: 0;
+  /*border-bottom: 1px solid var(--main-bg-color);*/
+}
+
+.plan-section__plan-list {
+
+}
+
+/* PLAN LIST */
+.plan-list {
+
+}
+
+.plan-list__item {
+  padding: 12px;
+  border-bottom: 1px solid var(--main-bg-color);
+}
+
+.plan-list__item:last-child {
+  /*margin-bottom: 0;*/
+  border-bottom: 0;
+}
+
+
+/* PROGRAM */
+.program-page {
+
+}
+.program-page__info {}
+.program-page__menu {}
+
+.program-info {
+  margin-bottom: 12px;
+}
+
+.program-info__title {}
+.program-info__details {}
+.program-info__text {}
+
+.program-menu {}
+
+.program-menu__item {
+  background-color: var(--main-bg-color);
+}
+
+.program-menu__link {
+  display: block;
+  padding: 12px;
+  color: var(--main-text-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.training-page {
+  text-align: center;
+}
+
+.training-page__title {
+  text-align: left;
+}
+
+.training-page__exercise {
+  font-size: 24px;
+  padding: 50px;
+}
+
+
+/* TRAINING TIMER */
+.training-timer {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  height: calc(100vh - 240px)
+}
+
+.trainig-timer__actions {
+
+}
+.training-timer__btn {
+  font-size: 32px;
+  border-radius: 10px;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  margin-left: 12px;
+  padding: 12px 40px;
+}
+
+.training-timer__start {
+
+}
+
+.training-timer__finish {
+
+}
+
+.training-timer__finish-workout {
+
+}
+
+.timer {
+  font-size: 72px;
+}

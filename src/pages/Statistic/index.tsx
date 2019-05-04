@@ -2,7 +2,7 @@ import React from 'react';
 
 const Statistic = () => (
   <div>
-    Statistic
+    <h2 className="page-title">Statistic</h2>
   </div>
 );
 

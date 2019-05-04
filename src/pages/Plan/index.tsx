@@ -56,9 +56,12 @@ class Plan extends React.Component<IPlanProps> {
   renderPlanList() {
     const { plan } = this.state;
     return (
-      <ul className="plan-list plan-page__plan-list">
-        {plan.map(this.renderPlanRow)}
-      </ul>
+      <div className="plan-section">
+        <h4 className="plan-section__title">Plan</h4>
+        <ul className="list-unstyle plan-list plan-section__plan-list">
+          {plan.map(this.renderPlanRow)}
+        </ul>
+      </div>
     );
   }
 
@@ -66,22 +69,23 @@ class Plan extends React.Component<IPlanProps> {
     const { id, title, work, pause, rest, roundes } = this.state;
     return (
       <div className="plan-page">
-        <h2 className="plan-page__title">
+        <h2 className="page-title plan-page__title">
           {title}
         </h2>
 
         <div className="plan-editor plan-page__editor">
-          <EditorInput 
-            className="plan-editor__edit-title"
-            type="text"
-            name="title"
-            value={title}
-            label="Title:"
-            onChange={this.changeValue}
-          />
-
-          <ul className="plan-editor__edit-settings">
-            <li>
+          <ul className="list-unstyle plan-editor__edit-settings">
+            <li className="plan-editor__input">
+              <EditorInput
+                className="plan-editor__edit-title"
+                type="text"
+                name="title"
+                value={title}
+                label="Title:"
+                onChange={this.changeValue}
+              />
+            </li>
+            <li className="plan-editor__input">
               <EditorInput 
                 type="number"
                 name="work"
@@ -91,7 +95,7 @@ class Plan extends React.Component<IPlanProps> {
                 step="5"
               />
             </li>
-            <li>
+            <li className="plan-editor__input">
               <EditorInput 
                 type="number"
                 name="pause"
@@ -101,7 +105,7 @@ class Plan extends React.Component<IPlanProps> {
                 step="5"
               />
             </li>
-            <li>
+            <li className="plan-editor__input">
               <EditorInput 
                 type="number"
                 name="roundes"
@@ -111,7 +115,7 @@ class Plan extends React.Component<IPlanProps> {
                 step="1"
               />
             </li>
-            <li>
+            <li className="plan-editor__input">
               <EditorInput 
                 type="number"
                 name="rest"

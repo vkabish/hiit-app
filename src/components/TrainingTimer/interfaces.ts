@@ -1,17 +1,27 @@
 export interface IButton {
   onClick: () => void,
   children?: Element | string,
+  className?: string,
   disabled?: boolean
 }
 
 export interface ITimer {
-  minutes: number,
-  seconds?: string 
+  minutes: string,
+  seconds?: string
+}
+
+
+export interface ITrainingTimerState {
+  minutes: string,
+  seconds?: string
 }
 
 export interface ITrainingTimer {
-  intervalHandler: string,
-  secondsRemaining: string,
+  time: number,
+  laps: number,
+  onFinish: () => void,
+  intervalHandler?: string,
+  secondsRemaining?: string,
 }
 
 export interface IPomodoroState {

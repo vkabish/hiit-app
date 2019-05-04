@@ -2,32 +2,27 @@ import React, {ReactText} from 'react';
 import { Link } from 'react-router-dom';
 import programs from '../../db';
 
+import { convertSeconds, IConvertSeconds } from '../../helpers/time';
 import { IProgramProps, IProgramState, ISettings } from './interfaces';
 
 class Program extends React.Component<IProgramProps> {
+  convertSeconds: IConvertSeconds;
+
+  constructor(props: any) {
+    super(props);
+    this.convertSeconds = convertSeconds;
+  }
   state: IProgramState = {
     id: '',
     title: '',
+    description: '',
     time: 0,
     kCal: 0,
-  }
+  };
 
   fetchProgram() {
     const { id } = this.props.match.params;
     return programs[id];
-  }
-
-  convertSeconds(sec: number): ReactText {
-    let hrs = Math.floor(sec / 3600);
-    let min = Math.floor((sec - (hrs * 3600)) / 60);
-    let seconds = sec - (hrs * 3600) - (min * 60);
-    seconds = Math.round(seconds * 100) / 100;
-
-    let result = (hrs < 10 ? "0" + hrs : hrs);
-    result += ":" + (min < 10 ? "0" + min : min);
-    result += ":" + (seconds < 10 ? "0" + seconds : seconds);
-
-    return result;
   }
 
   calculateTime(settings: ISettings): ReactText {
@@ -52,26 +47,40 @@ class Program extends React.Component<IProgramProps> {
   }
 
   render() {
-    const { id, title, time, kCal } = this.state;
+    const { id, title, description, time, kCal } = this.state;
     return (
       <div className="program-page">
         <div className="program-info program-page__info">
-          <h2 className="program-info__title">{title}</h2>
+          <h2 className="page-title program-info__title">
+            {title}
+          </h2>
+          <p>
+            {description}
+          </p>
           <div className="program-info__details">
             <span className="program-info__text">
               Time: {time}
             </span>
+            {' '}
             <span className="program-info__text">
               kCal: {kCal}
             </span>
           </div>
         </div>
 
-        <ul className="program-menu program-page__menu">
-          <li className="program-menu__item"><Link to={`/training/${id}`}>Training</Link></li>
-          <li className="program-menu__item"><Link to={`/statistic/${id}`}>Statistic</Link></li>
-          <li className="program-menu__item"><Link to={`/schedule/${id}`}>Schedule</Link></li>
-          <li className="program-menu__item"><Link to={`/plan/${id}`}>Plan</Link></li>
+        <ul className="list-unstyle program-menu program-page__menu">
+          <li className="program-menu__item">
+            <Link className="program-menu__link" to={`/training/${id}`}>Training</Link>
+          </li>
+          <li className="program-menu__item">
+            <Link className="program-menu__link" to={`/statistic/${id}`}>Statistic</Link>
+          </li>
+          <li className="program-menu__item">
+            <Link className="program-menu__link" to={`/schedule/${id}`}>Schedule</Link>
+          </li>
+          <li className="program-menu__item">
+            <Link className="program-menu__link" to={`/plan/${id}`}>Plan</Link>
+          </li>
         </ul>
       </div>
     );

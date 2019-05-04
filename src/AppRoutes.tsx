@@ -13,10 +13,10 @@ const AppRoutes = () => (
         </span>
         <div className="app-header__actions">
           <button className="app-header__btn">
-            icon user
+            Account
           </button>
           <button className="app-header__btn">
-            icon more
+            Setting
           </button>
         </div>
       </header>

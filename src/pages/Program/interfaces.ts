@@ -5,6 +5,7 @@ export interface IProgramProps {
 export interface IProgramState {
   id: string,
   title: string,
+  description: string,
   time: number,
   kCal: number,
 }

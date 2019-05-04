@@ -10,9 +10,9 @@ export interface IPlan {
 export interface ITrainingState {
   id: string,
   title: string,
-  settings: object,
-  plan: IPlan[],
-  counter: number
+  counter: number,
+  training: [],
+  titles: []
 }
 
 export interface ISettings {
@@ -21,4 +21,9 @@ export interface ISettings {
   roundes: number,
   rest: number,
   exercises: number
+}
+
+export interface IProgram {
+  settings: ISettings,
+  plan: IPlan[]
 }
