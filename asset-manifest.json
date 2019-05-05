@@ -1,13 +1,13 @@
 {
   "main.css": "/hiit-app/static/css/main.623fb0a0.chunk.css",
-  "main.js": "/hiit-app/static/js/main.8b021378.chunk.js",
-  "main.js.map": "/hiit-app/static/js/main.8b021378.chunk.js.map",
+  "main.js": "/hiit-app/static/js/main.c4fe2fb7.chunk.js",
+  "main.js.map": "/hiit-app/static/js/main.c4fe2fb7.chunk.js.map",
   "runtime~main.js": "/hiit-app/static/js/runtime~main.8c8ccb99.js",
   "runtime~main.js.map": "/hiit-app/static/js/runtime~main.8c8ccb99.js.map",
-  "static/js/2.07385925.chunk.js": "/hiit-app/static/js/2.07385925.chunk.js",
-  "static/js/2.07385925.chunk.js.map": "/hiit-app/static/js/2.07385925.chunk.js.map",
+  "static/js/2.3c5256b9.chunk.js": "/hiit-app/static/js/2.3c5256b9.chunk.js",
+  "static/js/2.3c5256b9.chunk.js.map": "/hiit-app/static/js/2.3c5256b9.chunk.js.map",
   "index.html": "/hiit-app/index.html",
-  "precache-manifest.bb8c16e8087dbf1e7fc6c41d5ca8b26d.js": "/hiit-app/precache-manifest.bb8c16e8087dbf1e7fc6c41d5ca8b26d.js",
+  "precache-manifest.7ea8a98df5ca1335a264dd947fcfba6e.js": "/hiit-app/precache-manifest.7ea8a98df5ca1335a264dd947fcfba6e.js",
   "service-worker.js": "/hiit-app/service-worker.js",
   "static/css/main.623fb0a0.chunk.css.map": "/hiit-app/static/css/main.623fb0a0.chunk.css.map"
 }
