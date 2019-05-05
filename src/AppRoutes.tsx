@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { Main, Plan, Program, Schedule, Statistic, Training } from './pages';
 
 import routes from './routes';
@@ -11,6 +11,7 @@ const AppRoutes = () => (
         <span className="app-header__title">
           HIIT App
         </span>
+        {false &&
         <div className="app-header__actions">
           <button className="app-header__btn">
             Account
@@ -19,6 +20,7 @@ const AppRoutes = () => (
             Setting
           </button>
         </div>
+        }
       </header>
       <div className="app-content">
         <Route path={`/`} exact component={Main} />

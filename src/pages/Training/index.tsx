@@ -2,71 +2,67 @@ import React from 'react';
 import programs from '../../db';
 import TrainingTimer from '../../components/TrainingTimer';
 
-import { ITrainingProps, ITrainingState, IProgram } from './interfaces';
+import { ITrainingProps, ITrainingState, IProgram, ITraining, ISettings, IPlan } from './interfaces';
 
 class Training extends React.Component<ITrainingProps> {
 
   constructor(props: any) {
     super(props);
     this.onFinish = this.onFinish.bind(this);
-    this.getTiming = this.getTiming.bind(this);
-    this.getTexts = this.getTexts.bind(this);
+    this.getTraining = this.getTraining.bind(this);
   }
 
   state: ITrainingState = {
     id: '',
     title: '',
     training: [],
-    titles: [],
     counter: 0
   };
 
-  getTiming(program: IProgram) {
-    const { settings } = program;
-    const { exercises, work, pause, roundes, rest } = settings;
-    const length = exercises * roundes;
-
-    return Array.from({ length })
-      .reduce((acc: number[], item: any, index: number) => {
-        if (index && !(index % exercises)) {
-          return [
-            ...acc,
-            rest,
-            work
-          ]
-        }
-
-        return [
-          ...acc,
-          pause,
-          work
-        ]
-      }, [])
+  getPlanTitle = (plan: IPlan[], index: number, exercises: number) => {
+    return plan[index] && plan[index].title ||
+    plan[index - exercises] && plan[index - exercises].title || 'NO TITLE';
   }
 
-  getTexts(program: IProgram) {
+  accTraining = (plan: IPlan[], settings: ISettings) => 
+    (acc: ITraining[], _: object, index: number):any => {
+    const { exercises, work, pause, roundes, rest } = settings;
+    const workoutTitle = this.getPlanTitle(plan, index, exercises);
+
+    if (index && !(index % exercises)) {
+      return [
+        ...acc,
+        { 
+          title: 'Now you can rest',
+          time: rest
+        },
+        {
+          title: workoutTitle,
+          time: work
+        }
+      ];
+    }
+
+    return [
+      ...acc,
+      {
+        title: 'Preparing',
+        time: pause
+      },
+      {
+        title: workoutTitle,
+        time: work
+      }
+    ];
+  }
+
+  getTraining(program: IProgram) {
     const { plan, settings } = program;
     const { exercises, roundes } = settings;
-    const length = exercises * roundes;
+    const trainingLength = exercises * roundes;
 
-    return Array.from({ length })
-      .reduce((acc: string[], _, index: number) => {
-        if (index && !(index % exercises)) {
-          return [
-            ...acc,
-            'REST',
-            plan[index] && plan[index].title ||
-            plan[index - exercises] && plan[index - exercises].title
-          ];
-        }
-
-        return [
-            ...acc,
-            'pause',
-            plan[index] && plan[index].title ||
-            plan[index - exercises] && plan[index - exercises].title
-          ];
-      }, []);
+    return Array.from({ length: trainingLength })
+      .reduce(this.accTraining(plan, settings), []);
   }
 
   onFinish() {
@@ -80,26 +76,24 @@ class Training extends React.Component<ITrainingProps> {
     const program = programs[id];
     this.setState({
       title: program.title,
-      training: this.getTiming(program),
-      titles: this.getTexts(program)
+      training: this.getTraining(program)
     });
   }
 
   render() {
-    const { title, training, titles, counter } = this.state;
-    const time = training[counter];
-    const text = titles[counter];
-    const laps = training.length - this.state.counter;
+    const { title, training, counter } = this.state;
+    const currentExercise = training[counter];
+    const laps = training.length - counter;
     return (
       <div className="training-page">
         <h2 className="page-title training-page__title">
           {title}
         </h2>
         <div className="training-page__exercise">
-          {text}
+          {currentExercise.title}
         </div>
         <TrainingTimer
-          time={time || 0}
+          time={currentExercise.time || 0}
           laps={laps}
           onFinish={this.onFinish}
         />

@@ -72,12 +72,16 @@ class Program extends React.Component<IProgramProps> {
           <li className="program-menu__item">
             <Link className="program-menu__link" to={`/training/${id}`}>Training</Link>
           </li>
-          <li className="program-menu__item">
-            <Link className="program-menu__link" to={`/statistic/${id}`}>Statistic</Link>
-          </li>
-          <li className="program-menu__item">
-            <Link className="program-menu__link" to={`/schedule/${id}`}>Schedule</Link>
-          </li>
+          {false &&
+            <li className="program-menu__item">
+              <Link className="program-menu__link" to={`/statistic/${id}`}>Statistic</Link>
+            </li>
+          }
+          {false &&
+            <li className="program-menu__item">
+              <Link className="program-menu__link" to={`/schedule/${id}`}>Schedule</Link>
+            </li>
+          }
           <li className="program-menu__item">
             <Link className="program-menu__link" to={`/plan/${id}`}>Plan</Link>
           </li>

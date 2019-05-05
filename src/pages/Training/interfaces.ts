@@ -11,8 +11,7 @@ export interface ITrainingState {
   id: string,
   title: string,
   counter: number,
-  training: [],
-  titles: []
+  training: ITraining[]
 }
 
 export interface ISettings {
@@ -26,4 +25,9 @@ export interface ISettings {
 export interface IProgram {
   settings: ISettings,
   plan: IPlan[]
+}
+
+export interface ITraining {
+  title: string,
+  time: number
 }

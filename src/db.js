@@ -55,15 +55,15 @@ const programs = [
       },
       {
         "id": "2",
-        "title": "twisting"
+        "title": "Twisting"
       },
       {
         "id": "3",
-        "title": "rock climber"
+        "title": "Rock climber"
       },
       {
         "id": "4",
-        "title": "bicycle"
+        "title": "Bicycle"
       },
       {
         "id": "5",
@@ -71,15 +71,15 @@ const programs = [
       },
       {
         "id": "6",
-        "title": "twisting"
+        "title": "Twisting"
       },
       {
         "id": "7",
-        "title": "rock climber"
+        "title": "Rock climber"
       },
       {
         "id": "8",
-        "title": "bicycle"
+        "title": "Bicycle"
       }
     ],
     "settings": {
@@ -93,46 +93,46 @@ const programs = [
   },
   {
     "id": "1",
-    "title": "Abdominal muscles",
-    "description": "Training abdominal muscles",
+    "title": "Hips and buttocks",
+    "description": "Training hips and buttocks muscles",
     "plan": [
       {
         "id": "1",
-        "title": "Raising the legs lying"
+        "title": "Lunges forward"
       },
       {
         "id": "2",
-        "title": "twisting"
+        "title": "Lunges to the side"
       },
       {
         "id": "3",
-        "title": "rock climber"
+        "title": "Lunges backward"
       },
       {
         "id": "4",
-        "title": "bicycle"
+        "title": "Squats"
       },
       {
         "id": "5",
-        "title": "Raising the legs lying"
+        "title": "Swing back with your right foot"
       },
       {
         "id": "6",
-        "title": "twisting"
+        "title": "Swing back with your right foot"
       },
       {
         "id": "7",
-        "title": "rock climber"
+        "title": "Pelvic lift"
       },
       {
         "id": "8",
-        "title": "bicycle"
+        "title": "Squats"
       }
     ],
     "settings": {
-      "work": 45,
-      "pause": 15,
-      "roundes": 3,
+      "work": 20,
+      "pause": 10,
+      "roundes": 1,
       "rest": 120,
       "exercises": 8
     },
